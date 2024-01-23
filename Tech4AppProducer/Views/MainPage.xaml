@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:Tech4AppProducer.ViewModels"
+			 x:Class="Tech4AppProducer.Views.MainPage"
+			 x:DataType="vm:MainViewModel">
+    <ScrollView BackgroundColor="Red">
+
+        <Grid RowDefinitions="Auto,Auto,*" BackgroundColor="pink">
+            <BoxView
+             BackgroundColor="DarkGray"
+             Color="DarkGray"
+             Grid.RowSpan="2"
+             HorizontalOptions="Fill"
+             VerticalOptions="Fill"/>
+            <Border StrokeShape="RoundRectangle 80"
+                 Stroke="White"
+                 StrokeThickness="6"
+                 HeightRequest="160"
+                 WidthRequest="160"
+                 Margin="0,8,0,0"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+                <Image Aspect="AspectFill"
+                     HeightRequest="160"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"                     
+                     WidthRequest="160"/>
+            </Border>
+
+            <VerticalStackLayout Padding="10" 
+                                 Grid.Row="2" 
+                                 BackgroundColor="White">
+                <Label Text="Cadastre-se.." 
+                       HorizontalTextAlignment="Center" 
+                       Padding="10" 
+                       Margin="10,20" 
+                       FontSize="18"/>
+
+                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="auto,*,auto" VerticalOptions="FillAndExpand">
+                    <Entry Grid.Row="0" Grid.Column="1"
+                           x:Name="entry_name"
+                           MinimumHeightRequest="70" 
+                           Margin="3"
+                           HorizontalTextAlignment="Center"
+                           Placeholder="Nome" 
+                           BackgroundColor="LightYellow" 
+                           TextColor="Black"
+                           Text="{Binding Name}"
+                           />
+                    <Entry Grid.Row="1" Grid.Column="1" 
+                           x:Name="entry_email"
+                           MinimumHeightRequest="70" 
+                           HorizontalTextAlignment="Center"
+                           Margin="3"
+                           Placeholder="e-mail" 
+                           BackgroundColor="LightYellow" 
+                           TextColor="Black"
+                           Text="{Binding Email}"/>
+                    
+                </Grid>
+                <Button Text="Cadastrar" 
+                        VerticalOptions="End"
+                        CornerRadius="30"
+                        Margin="0,20,0,0"
+                        BorderWidth="0"
+                        BackgroundColor="DodgerBlue" 
+                        FontSize="18"
+                        TextColor="White"
+                        Command="{Binding SubmitForm}"
+                    />
+            </VerticalStackLayout>
+        </Grid>
+        
+    </ScrollView>
+</ContentPage>
+
