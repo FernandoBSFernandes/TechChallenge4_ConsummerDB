@@ -1,18 +1,30 @@
-﻿using Core.Model;
+﻿using Consummer.Service;
+using Core.Model;
 using MassTransit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Consummer.Eventos
 {
     public class CadastroCliente : IConsumer<Usuario>
     {
+
+        private readonly ICadastrarUsuarioService _cadastrarUsuarioService;
+
+        public CadastroCliente(ICadastrarUsuarioService cadastrarUsuarioService)
+        {
+            _cadastrarUsuarioService = cadastrarUsuarioService;
+        }
+
         public async Task Consume(ConsumeContext<Usuario> context)
         {
-            await Console.Out.WriteLineAsync($"Cliente {context.Message.Nome} ({context.Message.Email}) cadastrado com sucesso!");
+
+            var usuario = context.Message;
+
+            //Enviar Email
+
+            //Salvar dados do usuário na base
+            await _cadastrarUsuarioService.Cadastrar(usuario);
+
+            await Console.Out.WriteLineAsync($"Cliente {usuario.Nome} ({context.Message.Email}) cadastrado com sucesso!");
         }
     }
 }
