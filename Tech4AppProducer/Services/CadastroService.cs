@@ -18,7 +18,7 @@ namespace Tech4AppProducer.Services
             {
                 var nomeFila = "filamobile";
                 var endpoint = await _bus.GetSendEndpoint(new Uri($"queue:{nomeFila}"));
-                await endpoint.Send(new Tech4Core.Model.Usuario(new Guid(), username, email));
+                await endpoint.Send(new Tech4Core.Model.Usuario(username, email));
             }
             catch(Exception ex)
             {

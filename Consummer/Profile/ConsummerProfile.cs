@@ -7,6 +7,7 @@ namespace Consummer.Profiles
         public ConsummerProfile()
         {
             CreateMap<Core.Model.Usuario, Core.TableModel.Usuario>();
+            CreateMap<Core.TableModel.Usuario, Core.Model.Usuario>();
         }
     }
 }

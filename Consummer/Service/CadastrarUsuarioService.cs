@@ -31,9 +31,8 @@ namespace Consummer.Service
 			}
 			catch (Exception)
 			{
-
-				throw;
-			}
+                throw;
+            }
         }
 
     }

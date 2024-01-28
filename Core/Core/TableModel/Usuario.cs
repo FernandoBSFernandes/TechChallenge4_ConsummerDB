@@ -8,9 +8,6 @@ namespace Core.TableModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
-        public int Id { get; set; }
-
         [Column("userId")]
         public Guid IdUsuario { get; set; }
 
@@ -21,5 +18,10 @@ namespace Core.TableModel
         [Column("email")]
         [EmailAddress]
         public string Email { get; set; }
+
+        public Usuario()
+        {
+            IdUsuario = Guid.NewGuid();
+        }
     }
 }

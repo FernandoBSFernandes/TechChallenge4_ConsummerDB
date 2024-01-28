@@ -4,15 +4,13 @@ namespace Tech4Core.Model
 {
     public class Usuario
     {
-        public Guid Id { get; set; }
         [Required]
         public string Nome { get; set; }
         [EmailAddress]
         public string? Email { get; set; }
 
-        public Usuario(Guid id, string nome, string? email)
+        public Usuario(string nome, string? email)
         {
-            Id = id;
             Nome = nome;
             Email = email;
         }

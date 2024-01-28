@@ -23,7 +23,7 @@ namespace ProdutorAPI.Controllers
         [HttpPost("cadastrar")]
         public async Task<IActionResult> Send()
         {
-            var usuario = new Usuario(Guid.NewGuid(), "Fernando Barros", "rm384842@fiap.edu.br");
+            var usuario = new Usuario("Fernando Barros", "rm384842@fiap.edu.br");
 
             var nomeFila = _configuration["NomeFila"] ?? string.Empty;
 
