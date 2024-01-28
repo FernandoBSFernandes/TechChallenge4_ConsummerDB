@@ -21,7 +21,7 @@ IHost host = Host.CreateDefaultBuilder(args)
             x.UsingAzureServiceBus((context, cfg) =>
             {
                 cfg.Host(connectionString);
-                cfg.ReceiveEndpoint("fila", e =>
+                cfg.ReceiveEndpoint(configuration.GetSection("MassTransitAzure")["NomeFila"], e =>
                 {
                     e.ConfigureConsumer<CadastroCliente>(context);
                 });
@@ -30,7 +30,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         #endregion
 
         //Adding DBContexts - Trocar nome da string de conexão
-        string connectionStringSQLServer = configuration.GetConnectionString("DefaultSQLServerStringConnection");
+        string connectionStringSQLServer = "Server=localhost;Initial Catalog=dbFilme;User Id=fernando;Password=FERNANDO123;TrustServerCertificate=true";
         services.AddDbContext<UsuarioContext>(settings => settings.UseSqlServer(connectionStringSQLServer));
 
         services.AddAutoMapper(typeof(ConsummerProfile));
