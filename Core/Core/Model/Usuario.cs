@@ -10,10 +10,13 @@ namespace Core.Model
         [EmailAddress]
         public string Email { get; set; }
 
-        public Usuario(string nome, string email)
+        public Guid Id { get; set; }
+
+        public Usuario(string nome, string email, Guid id)
         {
             Nome = nome;
             Email = email;
+            Id = id;
         }
 
         public override string ToString() => $"Usuário {Nome} ({Email})";

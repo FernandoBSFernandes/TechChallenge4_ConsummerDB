@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using Consummer.Repository;
+using Consummer.Service.Interface;
 using Core.Model;
 
 namespace Consummer.Service
 {
-    public interface ICadastrarUsuarioService
-    {
-        public Task Cadastrar(Usuario usuario);
-    }
-
     public class CadastrarUsuarioService : ICadastrarUsuarioService
     {
 

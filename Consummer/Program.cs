@@ -4,6 +4,7 @@ using Consummer.Eventos;
 using Consummer.Profiles;
 using Consummer.Repository;
 using Consummer.Service;
+using Consummer.Service.Interface;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,7 +37,8 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddAutoMapper(typeof(ConsummerProfile));
 
         services.AddTransient<ICadastrarUsuarioService, CadastrarUsuarioService>();
-        services.AddTransient<ICadastrarUsuarioRepository, CadastrarUsuarioRepository>();
+		services.AddTransient<IEmailService, EmailService>();
+		services.AddTransient<ICadastrarUsuarioRepository, CadastrarUsuarioRepository>();
 
         services.AddHostedService<Worker>();
     })
