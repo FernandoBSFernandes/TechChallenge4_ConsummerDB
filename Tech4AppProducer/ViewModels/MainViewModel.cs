@@ -26,8 +26,7 @@ public partial class MainViewModel : INotifyPropertyChanged //BaseViewModel
         }
     }
 
-    IConnectivity connectivity;
-    IBus bus;
+    IConnectivity connectivity;    
     public Command SubmitForm => new(async () => await SendInformationsAsync());
     bool IsBusy = false;
 
@@ -36,7 +35,6 @@ public partial class MainViewModel : INotifyPropertyChanged //BaseViewModel
     public MainViewModel()
     {
         connectivity = DependencyService.Get<IConnectivity>();
-        bus = DependencyService.Get<IBus>();
     }
     [RelayCommand]
     async Task SendInformationsAsync()
@@ -46,16 +44,9 @@ public partial class MainViewModel : INotifyPropertyChanged //BaseViewModel
 
         try
         {
-            if (connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await Shell.Current.DisplayAlert("Sem Conexão!",
-                    $"Por gentileza checar se está conectado e tente novamente.", "OK");
-                return;
-            }
             IsBusy = true;
 
-            CadastroService cadastroService = new CadastroService(bus);
-            await cadastroService.EnviarCadastro(Name, Email);
+            await CadastroService.EnviarCadastro(Name, Email);
             await Shell.Current.DisplayAlert("Sucesso!", "Cadastro enviado com sucesso!", "OK");
         }
         catch (Exception ex)

@@ -21,9 +21,10 @@ namespace ProdutorAPI.Controllers
         }
 
         [HttpPost("cadastrar")]
-        public async Task<IActionResult> Send()
+        public async Task<IActionResult> Send([FromBody] UsuarioMobile usuarioMobile)
         {
-            var usuario = new Usuario("Fernando Barros", "rm384842@fiap.edu.br");
+            
+            var usuario = new Usuario(usuarioMobile.Nome, usuarioMobile.Email, new Guid());
 
             var nomeFila = _configuration["NomeFila"] ?? string.Empty;
 

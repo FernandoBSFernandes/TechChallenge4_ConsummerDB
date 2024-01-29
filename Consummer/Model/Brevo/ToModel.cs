@@ -17,3 +17,4 @@ namespace Consummer.Model.Brevo
         {
         }
     }
+}
