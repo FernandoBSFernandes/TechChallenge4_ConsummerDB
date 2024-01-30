@@ -12,6 +12,8 @@
 
 ► Serviço Consumer que será responsável por registrar o cliente e enviar o email de confirmação.
 
+## [Demonstração](https://youtu.be/x98f92LCyNQ)
+
 # Referências
 
 [MAUI](https://learn.microsoft.com/pt-br/dotnet/maui/what-is-maui?view=net-maui-8.0)
